@@ -18,16 +18,12 @@ public class Server
                 Socket skCliente = skServidor.accept(); // crea objeto
                 System.out.println("Sirvo al cliente " + numCli);
                 
-                Scanner recibe = new Scanner (skCliente.getInputStream());
-                System.out.println(recibe.nextLine());
+                Scanner inmsj = new Scanner (skCliente.getInputStream());
+                System.out.println(inmsj.nextLine());
                 
-                //PrintWriter envia = new PrintWriter(cliente.getOutputStream());
-                
-                
-                
-                OutputStream aux = skCliente.getOutputStream();
-                DataOutputStream flujo = new DataOutputStream (aux);
-                flujo.writeUTF("Hola Cliente " + numCli);
+                //OutputStream aux = skCliente.getOutputStream();
+                //DataOutputStream flujo = new DataOutputStream (aux);
+                //flujo.writeUTF("Hola Cliente " + numCli);
                 
                 
                 skCliente.close();
