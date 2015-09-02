@@ -1,7 +1,7 @@
 public class SocketServer {
 
     public static void main(String[] args) {
-       ser c = new ser();
+       Server c = new Server();
       c.iniser();
     }
     
