@@ -34,10 +34,4 @@ class Server extends Thread
         }
         
     }
-    
-    public void parar ()
-    {
-    	
-    	System.out.println("yeaaahhh");
-    }
 }
