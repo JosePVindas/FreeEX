@@ -1,4 +1,4 @@
-package SE;
+package Server;
 public class SocketServer {
 
     public static void main(String[] args) {
