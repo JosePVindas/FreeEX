@@ -1,3 +1,4 @@
+package SE;
 import java.net.*;
 import java.util.Scanner;
 import java.io.*;
@@ -18,9 +19,10 @@ class Server extends Thread
                 BufferedReader inmsj = new BufferedReader(new InputStreamReader(skCliente.getInputStream()));
                 System.out.println(inmsj.readLine());
                 
-                DataOutputStream mensaje = new DataOutputStream(skCliente.getOutputStream());
-              
-                mensaje.writeUTF("Hola!!");
+                BufferedWriter mensaje = new BufferedWriter(new OutputStreamWriter(skCliente.getOutputStream()));
+                mensaje.write("Hola");
+                mensaje.flush();
+                mensaje.close();
                 
                 skCliente.close();
                 //skServidor.close();
