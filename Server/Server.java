@@ -22,9 +22,9 @@ class Server extends Thread
 	             System.out.println (flujo.readUTF());
 	           
 	        	 
-	        	 //OutputStream sale = skCliente.getOutputStream();
-	        	 //DataOutputStream flujo= new DataOutputStream( aux );
-	        	 //flujo.writeUTF( "Hola cliente " + numCli );
+	        	 OutputStream sale = skCliente.getOutputStream();
+	        	 DataOutputStream flujoc= new DataOutputStream(sale);
+	        	 flujoc.writeUTF( "Hola cliente " + numCli );
 	        	 skCliente.close();
         	}
         }catch (Exception e)
@@ -32,10 +32,5 @@ class Server extends Thread
             System.out.println(e.getMessage());
         }
         
-    }
-    public void read(){
-    	try {
-    		while 
-    	}
-    }
+    }    
 }
