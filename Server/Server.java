@@ -6,7 +6,6 @@ import DataManage.*;
 class Server extends Thread
 {
 	final int PUERTOENTRADA = 8080;
-    final int PUERTOSALIDA = 8081;
     ServerSocket skServidor;
     DataOutputStream mensaje;
     DataInputStream entrada;
@@ -42,7 +41,6 @@ class Server extends Thread
             
             WriteTXT Archive = new WriteTXT();
             Archive.run((flujo.readUTF()), "Base");
-            System.out.println (flujo.readUTF());
             
     	}
     	catch (Exception e)

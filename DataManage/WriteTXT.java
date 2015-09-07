@@ -1,34 +1,29 @@
 package DataManage;
+import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 
 public class WriteTXT
 {
-	public void run (String Information, String Archive)
-	{
-
-		//Un texto cualquiera guardado en una variable
-		String info= Information;
-
-		try
-		{
-			//Crear un objeto File se encarga de crear o abrir acceso a un archivo que se especifica en su constructor
-			File archivo=new File(Archive +".txt");
-
-			//Crear objeto FileWriter que sera el que nos ayude a escribir sobre archivo
-			FileWriter escribir=new FileWriter(archivo,true);
-
-			//Escribimos en el archivo con el metodo write 
-			escribir.write(info);
-
-			//Cerramos la conexion
-			escribir.close();
+	public static void EcribirFichero(File Ffichero,String SCadena){  
+		  try {  
+		          //Si no Existe el fichero lo crea  
+		           if(!Ffichero.exists()){  
+		               Ffichero.createNewFile();  
+		           }  
+		          /*Abre un Flujo de escritura,sobre el fichero con codificacion utf-8.  
+		           *Además  en el pedazo de sentencia "FileOutputStream(Ffichero,true)", 
+		           *true es por si existe el fichero seguir añadiendo texto y no borrar lo que tenia*/  
+		          BufferedWriter Fescribe=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(Ffichero,true), "utf-8"));  
+		          /*Escribe en el fichero la cadena que recibe la función.  
+		           *el string "\r\n" significa salto de linea*/  
+		          Fescribe.write(SCadena + "\r\n");  
+		          //Cierra el flujo de escritura  
+		          Fescribe.close();  
+		       } catch (Exception ex) {  
+		          //Captura un posible error le imprime en pantalla   
+		          System.out.println(ex.getMessage());  
+		       }   
 		}
-
-		//Si existe un problema al escribir cae aqui
-		catch(Exception e)
-		{
-			System.out.println("Error al escribir");
-		}
-	}
 }

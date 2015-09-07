@@ -1,35 +1,33 @@
 package DataManage;
-import java.io.FileReader;
-import java.io.BufferedReader;
+import java.io.*;
 
 public class ReadTXT
 {
-	public void run(String Information, String Archive)
-	{
-		//Creamos un String que va a contener todo el texto del archivo
-		String texto="";
-
-		try
-		{
-			//Creamos un archivo FileReader que obtiene lo que tenga el archivo
-			FileReader lector=new FileReader("Archive.txt");
-
-			//El contenido de lector se guarda en un BufferedReader
-			BufferedReader contenido=new BufferedReader(lector);
-
-			//Con el siguiente ciclo extraemos todo el contenido del objeto "contenido" y lo mostramos
-			while((texto=contenido.readLine())!=null)
-			{
-				System.out.println(texto);
-			}
-			contenido.close();
-		}
-			
-
-		//Si se causa un error al leer cae aqui
-		catch(Exception e)
-		{
-			System.out.println("Error al leer");
-		}
-	}
+	/*Función que lee el contenido de un fichero de texto 
+	*Parámetro:Ffichero. Objeto de la clase file donde se va a leer*/      
+	public static  void LeerFichero(File Ffichero){  
+	   try {  
+	       /*Si existe el fichero*/  
+	       if(Ffichero.exists()){  
+	           /*Abre un flujo de lectura a el 
+	            * fichero*/  
+	           BufferedReader Flee= new BufferedReader(new FileReader(Ffichero));  
+	           String Slinea;  
+	           System.out.println("**********Leyendo Fichero***********");  
+	           /*Lee el fichero linea a linea hasta llegar a la ultima*/  
+	           while((Slinea=Flee.readLine())!=null) {  
+	           /*Imprime la linea leida*/      
+	           System.out.println(Slinea);                
+	           }  
+	           System.out.println("*********Fin Leer Fichero**********");  
+	           /*Cierra el flujo*/  
+	           Flee.close();  
+	         }else{  
+	           System.out.println("Fichero No Existe");  
+	         }  
+	   } catch (Exception ex) {  
+	       /*Captura un posible error y le imprime en pantalla*/   
+	        System.out.println(ex.getMessage());  
+	   }  
+	 }  
 }
