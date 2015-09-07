@@ -30,7 +30,7 @@ public class EditTXT{
                 /*Abro un flujo de lectura*/  
                 BufferedReader Flee= new BufferedReader(new FileReader(FficheroAntiguo));  
                 String Slinea;  
-                /*Recorro el fichero de texto linea a linea*/  
+                /*Recorro el fichero de texto linea a linea*/              
                 while((Slinea=Flee.readLine())!=null) {   
                     /*Si la lia obtenida es igual al la bucada 
                      *para modificar*/  

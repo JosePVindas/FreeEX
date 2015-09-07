@@ -9,7 +9,7 @@ class Server extends Thread
     ServerSocket skServidor;
     DataOutputStream mensaje;
     DataInputStream entrada;
-    File Ffichero=new File("DataBase");
+    File Ffichero=new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBase.txt");
     
     public void run()
     {
@@ -18,13 +18,13 @@ class Server extends Thread
         	skServidor = new ServerSocket(PUERTOENTRADA);
         	
         	System.out.println("Escucho el puerto " + PUERTOENTRADA );
-            for ( int numCli = 0; numCli < 3; numCli++) {
+            for ( int numCli = 0; numCli < 4; numCli++) {
         		 Socket skCliente = skServidor.accept();
 	        	 System.out.println("Sirvo al cliente " + numCli);
-	        	 read (skCliente, numCli);
-	        	 write (skCliente, numCli);
+	        	 readC (skCliente, numCli);
+	        	 writeC (skCliente, numCli);
 	        	 skCliente.close();
-	        	 skServidor.close();
+	        	 //skServidor.close();
 	        	 
         	}
         }
@@ -33,7 +33,7 @@ class Server extends Thread
             System.out.println(e.getMessage());
         }    
     } 
-    protected void read (Socket socket, int numCli)   
+    protected void readC (Socket socket, int numCli)   
     {
     	try 
     	{
@@ -41,19 +41,20 @@ class Server extends Thread
             DataInputStream flujo = new DataInputStream(entra);
             //WriteTXT.EcribirFichero(Ffichero, (flujo.readUTF()) + numCli);
             
+            
     	}
     	catch (Exception e)
         {
             System.out.println(e.getMessage()); 
         }
     }
-    protected void write (Socket socket, int numCli)   
+    protected void writeC (Socket socket, int numCli)   
     {
     	try 
     	{
     		DataOutputStream flujoc= new DataOutputStream(socket.getOutputStream());
        	    flujoc.writeUTF( "Hola cliente " + numCli);
-       	    EditTXT.ModificarFichero(Ffichero, "Hola servidor0", "HEY");
+       	    //EditTXT.ModificarFichero(Ffichero, "Hola servidor2", "HEY");
     	}
     	catch (Exception e)
         {
