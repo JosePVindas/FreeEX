@@ -1,6 +1,7 @@
 package Server;
 import java.net.*;
 import java.io.*;
+import DataManage.*;
 
 class Server extends Thread
 {
@@ -17,29 +18,52 @@ class Server extends Thread
         	skServidor = new ServerSocket(PUERTOENTRADA);
         	
         	System.out.println("Escucho el puerto " + PUERTOENTRADA );
-        	//for ( int numCli = 0; numCli < 3; numCli++) {
-        	
-        	while (true){
-        		 int numCli = 1;
+            for ( int numCli = 0; numCli < 3; numCli++) {
         		 Socket skCliente = skServidor.accept();
 	        	 System.out.println("Sirvo al cliente " + numCli);
-	        	 
-	        	 InputStream entra = skCliente.getInputStream();
-	             DataInputStream flujo = new DataInputStream(entra);
-	             System.out.println (flujo.readUTF());
-	           
-	        	 DataOutputStream flujoc= new DataOutputStream(skCliente.getOutputStream());
-	        	 flujoc.writeUTF( "Hola cliente " + numCli );
-	        	 
-	        	 flujo.close();
-	        	 flujoc.close();
+	        	 read (skCliente);
+	        	 write (skCliente, numCli);
 	        	 skCliente.close();
 	        	 skServidor.close();
+	        	 
         	}
-        }catch (Exception e)
+        }
+        catch (Exception e)
         {
             System.out.println(e.getMessage());
+        }    
+    } 
+    protected void read (Socket socket)   
+    {
+    	try 
+    	{
+    		InputStream entra = socket.getInputStream();
+            DataInputStream flujo = new DataInputStream(entra);
+            
+            WriteTXT Archive = new WriteTXT();
+            Archive.run((flujo.readUTF()), "Base");
+            System.out.println (flujo.readUTF());
+            
+    	}
+    	catch (Exception e)
+        {
+            System.out.println(e.getMessage()); 
         }
-        
-    }    
+    }
+    protected void write (Socket socket, int numCli)   
+    {
+    	try 
+    	{
+    		DataOutputStream flujoc= new DataOutputStream(socket.getOutputStream());
+       	    flujoc.writeUTF( "Hola cliente " + numCli);
+    	}
+    	catch (Exception e)
+        {
+            System.out.println(e.getMessage()); 
+        }
+    }
+    protected void Savejson ()
+    {
+    	
+    }
 }
