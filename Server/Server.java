@@ -9,6 +9,7 @@ class Server extends Thread
     ServerSocket skServidor;
     DataOutputStream mensaje;
     DataInputStream entrada;
+    File Ffichero=new File("DataBase");
     
     public void run()
     {
@@ -20,7 +21,7 @@ class Server extends Thread
             for ( int numCli = 0; numCli < 3; numCli++) {
         		 Socket skCliente = skServidor.accept();
 	        	 System.out.println("Sirvo al cliente " + numCli);
-	        	 read (skCliente);
+	        	 read (skCliente, numCli);
 	        	 write (skCliente, numCli);
 	        	 skCliente.close();
 	        	 skServidor.close();
@@ -32,15 +33,13 @@ class Server extends Thread
             System.out.println(e.getMessage());
         }    
     } 
-    protected void read (Socket socket)   
+    protected void read (Socket socket, int numCli)   
     {
     	try 
     	{
     		InputStream entra = socket.getInputStream();
             DataInputStream flujo = new DataInputStream(entra);
-            
-            WriteTXT Archive = new WriteTXT();
-            Archive.run((flujo.readUTF()), "Base");
+            //WriteTXT.EcribirFichero(Ffichero, (flujo.readUTF()) + numCli);
             
     	}
     	catch (Exception e)
@@ -54,6 +53,7 @@ class Server extends Thread
     	{
     		DataOutputStream flujoc= new DataOutputStream(socket.getOutputStream());
        	    flujoc.writeUTF( "Hola cliente " + numCli);
+       	    EditTXT.ModificarFichero(Ffichero, "Hola servidor0", "HEY");
     	}
     	catch (Exception e)
         {

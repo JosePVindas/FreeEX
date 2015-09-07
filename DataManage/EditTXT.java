@@ -46,12 +46,13 @@ public class EditTXT{
                 /*Obtengo el nombre del fichero inicial*/  
                 String SnomAntiguo=FficheroAntiguo.getName();  
                 /*Borro el fichero inicial*/  
-                BorrarFichero(FficheroAntiguo);  
+                Flee.close();  
+                DeleteTXT.BorrarFichero(FficheroAntiguo);  
                 /*renombro el nuevo fichero con el nombre del  
                 *fichero inicial*/  
                 FficheroNuevo.renameTo(FficheroAntiguo);  
                 /*Cierro el flujo de lectura*/  
-                Flee.close();  
+                //Flee.close();  
             }else{  
                 System.out.println("Fichero No Existe");  
             }  
@@ -94,7 +95,7 @@ view plainprint?
                      *para eliminar*/  
                     if (!Slinea.toUpperCase().trim().equals(Satigualinea.toUpperCase().trim())) {  
                        /*la escribo en el fichero nuevo*/   
-                       EcribirFichero(FficheroNuevo,Slinea);  
+                       WriteTXT.EcribirFichero(FficheroNuevo,Slinea);  
                     }else{  
                         /*Si es igual simple mete no hago nada*/  
                     }               
@@ -102,11 +103,12 @@ view plainprint?
                 /*Obtengo el nombre del fichero inicial*/  
                 String SnomAntiguo=FficheroAntiguo.getName();  
                 /*Borro el fichero inicial*/  
-                BorrarFichero(FficheroAntiguo);  
+                Flee.close();  
+                DeleteTXT.BorrarFichero(FficheroAntiguo);  
                 /*renombro el nuevo fichero con el nombre del fichero inicial*/  
                 FficheroNuevo.renameTo(FficheroAntiguo);  
                 /*Cierro el flujo de lectura*/  
-                Flee.close();  
+                //Flee.close();  
             }else{  
                 System.out.println("Fichero No Existe");  
             }  
