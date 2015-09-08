@@ -49,13 +49,7 @@ class Server extends Thread
             q = flujo.readUTF();
             System.out.println(q);
             
-            if (q == "New Client"){
-            	CreateClientUser ("Marco", "123");
-            	
-            }
-            else{
-            	System.out.println("nop");
-            }
+            
             
     	}
     	catch (Exception e)

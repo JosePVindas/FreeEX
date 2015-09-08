@@ -5,12 +5,12 @@ import com.google.gson.*;
 class JsonEncodeDemo {
 
    public static void main(String[] args){
-      JSONObject obj = new JSONObject();
+      JsonObject obj = new JsonObject();
 
-      obj.put("name", "foo");
-      obj.put("num", new Integer(100));
-      obj.put("balance", new Double(1000.21));
-      obj.put("is_vip", new Boolean(true));
+      obj.addProperty("name", "foo");
+      obj.addProperty("num", new Integer(100));
+      obj.addProperty("balance", new Double(1000.21));
+      obj.addProperty("is_vip", new Boolean(true));
 
       System.out.print(obj);
    }
