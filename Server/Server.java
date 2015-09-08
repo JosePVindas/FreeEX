@@ -23,8 +23,11 @@ class Server extends Thread
             for ( int numCli = 0; numCli < 4; numCli++) {
         		 Socket skCliente = skServidor.accept();
 	        	 System.out.println("Sirvo al cliente " + numCli);
+	        	 
 	        	 readC (skCliente, numCli);
 	        	 writeC (skCliente, numCli);
+	        	 
+	        	 
 	        	 skCliente.close();
 	        	 skServidor.close();
 	        	 
@@ -35,24 +38,24 @@ class Server extends Thread
             System.out.println(e.getMessage());
         }    
     } 
-    protected void readC (Socket socket, int numCli)   
+    protected void readC (Socket socket, int numCli)  
     {
     	try 
     	{
     		InputStream entra = socket.getInputStream();
             DataInputStream flujo = new DataInputStream(entra);
-            System.out.println(flujo.readUTF());
-            
+             
             String q;
             q = flujo.readUTF();
+            System.out.println(q);
             
             if (q == "New Client"){
             	CreateClientUser ("Marco", "123");
             	
             }
-            
-            //WriteTXT.EcribirFichero(FficheroClan, (flujo.readUTF()) + numCli);
-            
+            else{
+            	System.out.println("nop");
+            }
             
     	}
     	catch (Exception e)
@@ -66,7 +69,7 @@ class Server extends Thread
     	{
     		DataOutputStream flujoc= new DataOutputStream(socket.getOutputStream());
        	    flujoc.writeUTF( "Hola cliente " + numCli);
-       	    //EditTXT.ModificarFichero(FficheroClan, "Hola servidor2", "HEY");
+
     	}
     	catch (Exception e)
         {

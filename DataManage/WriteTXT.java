@@ -20,6 +20,7 @@ public class WriteTXT
 		           *el string "\r\n" significa salto de linea*/  
 		          Fescribe.write(SCadena + "\r\n");  
 		          //Cierra el flujo de escritura  
+		          System.out.println("Archivo Creado");
 		          Fescribe.close();  
 		       } catch (Exception ex) {  
 		          //Captura un posible error le imprime en pantalla   
