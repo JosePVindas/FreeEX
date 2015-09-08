@@ -9,7 +9,9 @@ class Server extends Thread
     ServerSocket skServidor;
     DataOutputStream mensaje;
     DataInputStream entrada;
-    File Ffichero=new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBase.txt");
+    File FficheroClan =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClan.txt");
+    File FficheroClient =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClient.txt");
+    
     
     public void run()
     {
@@ -24,7 +26,7 @@ class Server extends Thread
 	        	 readC (skCliente, numCli);
 	        	 writeC (skCliente, numCli);
 	        	 skCliente.close();
-	        	 //skServidor.close();
+	        	 skServidor.close();
 	        	 
         	}
         }
@@ -39,7 +41,17 @@ class Server extends Thread
     	{
     		InputStream entra = socket.getInputStream();
             DataInputStream flujo = new DataInputStream(entra);
-            //WriteTXT.EcribirFichero(Ffichero, (flujo.readUTF()) + numCli);
+            System.out.println(flujo.readUTF());
+            
+            String q;
+            q = flujo.readUTF();
+            
+            if (q == "New Client"){
+            	CreateClientUser ("Marco", "123");
+            	
+            }
+            
+            //WriteTXT.EcribirFichero(FficheroClan, (flujo.readUTF()) + numCli);
             
             
     	}
@@ -54,15 +66,16 @@ class Server extends Thread
     	{
     		DataOutputStream flujoc= new DataOutputStream(socket.getOutputStream());
        	    flujoc.writeUTF( "Hola cliente " + numCli);
-       	    //EditTXT.ModificarFichero(Ffichero, "Hola servidor2", "HEY");
+       	    //EditTXT.ModificarFichero(FficheroClan, "Hola servidor2", "HEY");
     	}
     	catch (Exception e)
         {
             System.out.println(e.getMessage()); 
         }
     }
-    protected void Savejson ()
+    protected void CreateClientUser (String User, String Password)
     {
-    	
+    	System.out.println("si");
+        WriteTXT.EcribirFichero(FficheroClient, "HELLO" + User + Password);
     }
 }
