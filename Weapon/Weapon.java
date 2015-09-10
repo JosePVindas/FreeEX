@@ -5,6 +5,7 @@ public abstract class Weapon {
 	int Ctime;
 	int power;
 	int time;
+	
 	boolean image;
 	
 	public byte getResource() {
@@ -40,11 +41,11 @@ public abstract class Weapon {
 	}
 
 	public boolean getImage() {
-		return img;
+		return image;
 	}
 
 	public void setImage(boolean img) {
-		this.imge = img;
+		this.image = image;
 	}
 
 	
