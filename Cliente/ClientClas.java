@@ -4,17 +4,18 @@ public class ClientClas {
 	
 	private String name;
 	private String password;
-	private String Range;
-	private int position;
+	private String range;
+	private int positionx;
+	private int positiony;
 	
 	
 
-	public ClientClas(String Name, String Image, String Leader, int Days) {
+	public ClientClas(String Name, String Password, String Range, int Positionx, int Positiony) {
 		this.name = Name;
-		this.Imag = Image;
-		this.leader = Leader;
-		this.days = Days;
-
+		this.password = Password;
+		this.range = Range;
+		this.positionx = Positionx;
+		this.positiony = Positiony;
 	}
 	
 	
