@@ -1,17 +1,30 @@
+/*
+{“StringClanName”: GABOCLAN, “ImageEmblem”: Image, “StringLeader”: “Gabriel”, “IntDays”: 3, “ImageRelic”: Image, “ObjectsClients”: [{“Gabriel”: get.position}, {“Pablo”: get.position}], “StringRequest”: “Accion”}
+{“ClienteName”: “Gabo”, “StringPassword”: “CODE”, “Contributions”: [“IntResource1”: 23, “IntResource2”: 45, “IntResource3”: 45, “IntResource4”: 47], “StringAction”: “Accion”}
+  */
+
 package Server;
 import java.net.*;
+import java.util.ArrayList;
+
+import com.google.gson.Gson;
+
+import Clan.ClanClas;
+
 import java.io.*;
 import DataManage.*;
+import net.sf.json.JSONObject;
 
-class Server extends Thread
+public class Server extends Thread
 {
 	final int PUERTOENTRADA = 8080;
+	
+	
     ServerSocket skServidor;
     DataOutputStream mensaje;
     DataInputStream entrada;
     File FficheroClan =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClan.txt");
     File FficheroClient =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClient.txt");
-    
     
     public void run()
     {
@@ -22,15 +35,11 @@ class Server extends Thread
         	System.out.println("Escucho el puerto " + PUERTOENTRADA );
             for ( int numCli = 0; numCli < 4; numCli++) {
         		 Socket skCliente = skServidor.accept();
-	        	 System.out.println("Sirvo al cliente " + numCli);
-	        	 
+        		 System.out.println("Sirvo al cliente " + numCli);
 	        	 readC (skCliente, numCli);
 	        	 writeC (skCliente, numCli);
-	        	 
-	        	 
 	        	 skCliente.close();
 	        	 skServidor.close();
-	        	 
         	}
         }
         catch (Exception e)
@@ -42,15 +51,21 @@ class Server extends Thread
     {
     	try 
     	{
+    		
     		InputStream entra = socket.getInputStream();
             DataInputStream flujo = new DataInputStream(entra);
-             
-            String q;
-            q = flujo.readUTF();
-            System.out.println(q);
             
             
-            
+            ///////////////////////////////////////////////////////////////
+            String jsondata = flujo.readUTF();
+            System.out.println(jsondata);
+            Gson jsonclan = new Gson();
+            ClanClas obj = jsonclan.fromJson(jsondata, ClanClas.class);
+            obj.getDays();
+    		System.out.println(obj.getDays());
+    		
+    		
+    	///////////////////////////////////////////////////////////////////
     	}
     	catch (Exception e)
         {
