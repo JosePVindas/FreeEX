@@ -5,7 +5,7 @@ public class ClanClas {
 	private String name;
 	private String Imag;
 	private String leader;
-	private int days;
+	private int days = 0;
 	private String clients;
 	private String Request;	
 	

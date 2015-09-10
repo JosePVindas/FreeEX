@@ -13,15 +13,13 @@ import com.google.gson.Gson;
 import Clan.ClanClas;
 import DataManage.*;
 import Server.Server;
-public class SocketServer {
+public class CORRER {
 	
 	public static void main(String[] args) {
-    	 File FficheroClient =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClient.txt");
+    	 //File FficheroClient =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClient.txt");
     
 		Server s = new Server ();
 		s.run();
 		
-    	}
-		
-		
+    }
 }
