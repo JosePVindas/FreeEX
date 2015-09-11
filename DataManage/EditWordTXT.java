@@ -6,7 +6,7 @@ import java.util.Random;
 import com.google.gson.Gson;
 
 public class EditWordTXT{
-    public static  void ModificarFichero(File FficheroAntiguo,String Satigualinea,String Snuevalinea){          
+    public static  void ModificarFichero(File FficheroAntiguo, String Satigualinea,String Snuevalinea){          
         /*Obtengo un numero aleatorio*/  
         Random numaleatorio= new Random(3816L);   
         /*Creo un nombre para el nuevo fichero apartir del 
@@ -21,17 +21,12 @@ public class EditWordTXT{
                 BufferedReader Flee= new BufferedReader(new FileReader(FficheroAntiguo));  
                 String Slinea;  
          
-            
                 while((Slinea=Flee.readLine())!=null) {
-                	
                 	if (Slinea.contains(Satigualinea)){
-	                	String resultado = Slinea.replace(Satigualinea, Snuevalinea);
-	                	System.out.println(resultado);
+	                	String resultado = Slinea.replace(Satigualinea, Snuevalinea);	                	
 	                	WriteTXT.EcribirFichero(FficheroNuevo,resultado);
                 	}else{
-                		WriteTXT.EcribirFichero(FficheroNuevo,Slinea);
-                		Flee.close();
-                		
+                		WriteTXT.EcribirFichero(FficheroNuevo,Slinea);                		
                 	}
                 }
              

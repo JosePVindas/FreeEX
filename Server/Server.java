@@ -35,12 +35,20 @@ public class Server extends Thread
             for ( int numCli = 0; numCli < 4; numCli++) {
         		 Socket skCliente = skServidor.accept();
         		 System.out.println("Sirvo al cliente " + numCli);
-	        	 //readC (skCliente, numCli);
+	        	 readC (skCliente, numCli);
+        		 /////////////////////////////////////////////////////////////
+        		 //String q = Modificar(FficheroClan, "Gabriel");
+        		 //Gson o = new Gson();
+        		 //System.out.println(q);
+        		 
+        		 //ClanClas b = o.fromJson(, ClanClas.class);
+        		 
+        		 //System.out.println(b.getName());
 	        	 writeC (skCliente, numCli);
-	        	 EditWordTXT.ModificarFichero(FficheroClient, "Gaboclan", "TAVO");
 	        	 skCliente.close();
 	        	 skServidor.close();
-        	}
+        	///////////////////////////////////////////////////////////////////
+            }
         }
         
         catch (Exception e)
@@ -56,6 +64,16 @@ public class Server extends Thread
     		InputStream entra = socket.getInputStream();
             DataInputStream flujo = new DataInputStream(entra);
             String jsondata = flujo.readUTF();
+            Gson o = new Gson();
+	   		System.out.println(jsondata);
+	   		
+	   		ClanClas b = o.fromJson(jsondata, ClanClas.class);
+	   		
+	   		 
+	   		System.out.println(b.getName());
+       	 
+            
+            /*
             if ((jsondata.contains("ClanName"))){
             	WriteTXT.EcribirFichero(FficheroClan, jsondata);
             	
@@ -63,7 +81,7 @@ public class Server extends Thread
             if (jsondata.contains("ClientName")){
             	WriteTXT.EcribirFichero(FficheroClient, jsondata);
             }
-            
+            **/
     	}
     	catch (Exception e)
         {
@@ -84,21 +102,28 @@ public class Server extends Thread
         }
     }
     
-    
-    
-    protected void CreateClientUser (String jsondata)
-    {
-    	Gson jsonclan = new Gson();
-        ClanClas obj = jsonclan.fromJson(jsondata, ClanClas.class);
-        obj.getDays();
-   
-    }
-    protected void CreateClan (String jsondata)
-    {
-        Gson jsonclan = new Gson();
-        ClanClas obj = jsonclan.fromJson(jsondata, ClanClas.class);
-        obj.getDays();
-		System.out.println(obj.getDays());
-		
+    public String Modificar(File FficheroAntiguo, String Satigualinea){          
+        try {  
+            /*Si existe el fichero inical*/  
+            if(FficheroAntiguo.exists()){  
+                /*Abro un flujo de lectura*/  
+                BufferedReader Flee= new BufferedReader(new FileReader(FficheroAntiguo));  
+                String Slinea;  
+         
+                while((Slinea=Flee.readLine())!=null) {
+                	if (Slinea.contains(Satigualinea)){
+                		return Slinea;
+                	}
+                }  
+                Flee.close(); 
+                
+            }else{  
+                System.out.println("Fichero No Existe");  
+            }  
+        } catch (Exception ex) {  
+            /*Captura un posible error y le imprime en pantalla*/   
+             System.out.println(ex.getMessage());  
+        }
+		return null;  
     }
 }

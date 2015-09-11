@@ -2,14 +2,14 @@ package Clan;
 
 public class ClientClas {
 	
-	private String name = null;
-	private String password= null;
+	private String name;
+	private String password;
 	private String range = "Recluta";
-	private int positionx = 0;
-	private int positiony = 0;
-	private String possessiona = null;
-	private String possessiond = null;
-	private String action = null;
+	private int positionx;
+	private int positiony;
+	private String possessiona;
+	private String possessiond;
+	private String action;
 	
 
 	public ClientClas(String Name, String Password, String Range, int Positionx, int Positiony, String Possessiona, String Possessiond, String Action) {
