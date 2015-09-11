@@ -14,28 +14,25 @@ public class EditWordTXT{
         String SnombFichNuev=FficheroAntiguo.getParent()+"/auxiliar"+String.valueOf(Math.abs(numaleatorio.nextInt()))+".txt";  
         /*Crea un objeto File para el fichero nuevo*/  
         File FficheroNuevo=new File(SnombFichNuev);  
-        
         try {  
             /*Si existe el fichero inical*/  
             if(FficheroAntiguo.exists()){  
                 /*Abro un flujo de lectura*/  
                 BufferedReader Flee= new BufferedReader(new FileReader(FficheroAntiguo));  
                 String Slinea;  
-                Slinea=Flee.readLine();
-                Gson j = new Gson ();
-                j.toJson(Slinea);
-                System.out.println (j);
-                /**
-                while((Slinea)!=null) {
+         
+            
+                while((Slinea=Flee.readLine())!=null) {
                 	
-                	if (Slinea.to){
+                	if (Slinea.contains(Satigualinea)){
 	                	String resultado = Slinea.replace(Satigualinea, Snuevalinea);
 	                	System.out.println(resultado);
 	                	WriteTXT.EcribirFichero(FficheroNuevo,resultado);
                 	}else{
                 		WriteTXT.EcribirFichero(FficheroNuevo,Slinea);
+                		Flee.close();
+                		
                 	}
-                	
                 }
              
                   
@@ -47,7 +44,7 @@ public class EditWordTXT{
                 FficheroNuevo.renameTo(FficheroAntiguo);  
                 
                 Flee.close(); 
-                **/ 
+                
             }else{  
                 System.out.println("Fichero No Existe");  
             }  

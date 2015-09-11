@@ -1,14 +1,1 @@
-{ClienteName: Gabo, StringPassword: CODE, Contributions: [no: 23, IntResource2: 45, IntResource3: 45, IntResource4: 47], StringAction: Accion}
-{ClienteName: Gabo, StringPassword: CODE, Contributions: [no: 23, IntResource2: 45, IntResource3: 45, IntResource4: 47], StringAction: Accion}
-{ClienteName: Gabo, StringPassword: CODE, Contributions: [no: 23, IntResource2: 45, IntResource3: 45, IntResource4: 47], StringAction: Accion}
-{ClienteName: Gabo, StringPassword: CODE, Contributions: [no: 23, IntResource2: 45, IntResource3: 45, IntResource4: 47], StringAction: Accion}
-{ClienteName: Gabo, StringPassword: CODE, Contributions: [no: 23, IntResource2: 45, IntResource3: 45, IntResource4: 47], StringAction: Accion}
-{ClienteName: Gabo, StringPassword: CODE, Contributions: [no: 23, IntResource2: 45, IntResource3: 45, IntResource4: 47], StringAction: Accion}
-{ClienteName: Gabo, StringPassword: CODE, Contributions: [no: 23, IntResource2: 45, IntResource3: 45, IntResource4: 47], StringAction: Accion}
-{ClienteName: Gabo, StringPassword: CODE, Contributions: [IntResource1: 23, IntResource2: 45, IntResource3: 45, IntResource4: 47], StringAction: Accion}
-{ClienteName: Gabo, StringPassword: CODE, Contributions: [IntResource1: 23, IntResource2: 45, IntResource3: 45, IntResource4: 47], StringAction: Accion}
-{ClienteName: Gabo, StringPassword: CODE, Contributions: [IntResource1: 23, IntResource2: 45, IntResource3: 45, IntResource4: 47], StringAction: Accion}
-{ClienteName: Gabo, StringPassword: CODE, Contributions: [IntResource1: 23, IntResource2: 45, IntResource3: 45, IntResource4: 47], StringAction: Accion}
-{ClienteName: Gabo, StringPassword: CODE, Contributions: [IntResource1: 23, IntResource2: 45, IntResource3: 45, IntResource4: 47], StringAction: Accion}
-{ClienteName: Gabo, StringPassword: CODE, Contributions: [IntResource1: 23, IntResource2: 45, IntResource3: 45, IntResource4: 47], StringAction: Accion}
-{ClienteName: Gabo, StringPassword: CODE, Contributions: [IntResource1: 23, IntResource2: 45, IntResource3: 45, IntResource4: 47], StringAction: Accion}
+{"ClientName": "TAVO", "Image": "COlor", "Leader": "Gabriel", int: 0, "Clients": "Gabriel", "Request": "doo"}

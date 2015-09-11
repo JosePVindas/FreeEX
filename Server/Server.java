@@ -31,17 +31,18 @@ public class Server extends Thread
         try
         {
         	skServidor = new ServerSocket(PUERTOENTRADA);
-        	
         	System.out.println("Escucho el puerto " + PUERTOENTRADA );
             for ( int numCli = 0; numCli < 4; numCli++) {
         		 Socket skCliente = skServidor.accept();
         		 System.out.println("Sirvo al cliente " + numCli);
-	        	 readC (skCliente, numCli);
+	        	 //readC (skCliente, numCli);
 	        	 writeC (skCliente, numCli);
+	        	 EditWordTXT.ModificarFichero(FficheroClient, "Gaboclan", "TAVO");
 	        	 skCliente.close();
 	        	 skServidor.close();
         	}
         }
+        
         catch (Exception e)
         {
             System.out.println(e.getMessage());
@@ -54,18 +55,15 @@ public class Server extends Thread
     		
     		InputStream entra = socket.getInputStream();
             DataInputStream flujo = new DataInputStream(entra);
-            
-            
-            ///////////////////////////////////////////////////////////////
             String jsondata = flujo.readUTF();
-            System.out.println(jsondata);
-            Gson jsonclan = new Gson();
-            ClanClas obj = jsonclan.fromJson(jsondata, ClanClas.class);
-            obj.getDays();
-    		System.out.println(obj.getDays());
-    		
-    		
-    	///////////////////////////////////////////////////////////////////
+            if ((jsondata.contains("ClanName"))){
+            	WriteTXT.EcribirFichero(FficheroClan, jsondata);
+            	
+            }
+            if (jsondata.contains("ClientName")){
+            	WriteTXT.EcribirFichero(FficheroClient, jsondata);
+            }
+            
     	}
     	catch (Exception e)
         {
@@ -85,9 +83,22 @@ public class Server extends Thread
             System.out.println(e.getMessage()); 
         }
     }
-    protected void CreateClientUser (String User, String Password)
+    
+    
+    
+    protected void CreateClientUser (String jsondata)
     {
-    	System.out.println("si");
-        WriteTXT.EcribirFichero(FficheroClient, "HELLO" + User + Password);
+    	Gson jsonclan = new Gson();
+        ClanClas obj = jsonclan.fromJson(jsondata, ClanClas.class);
+        obj.getDays();
+   
+    }
+    protected void CreateClan (String jsondata)
+    {
+        Gson jsonclan = new Gson();
+        ClanClas obj = jsonclan.fromJson(jsondata, ClanClas.class);
+        obj.getDays();
+		System.out.println(obj.getDays());
+		
     }
 }
