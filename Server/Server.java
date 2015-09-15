@@ -7,30 +7,42 @@ import Clan.ClientClas;
 import java.io.*;
 import DataManage.*;
 
-public class Server extends Thread
+public class Server extends Thread 
 {
 	final int PUERTOENTRADA = 8080;
-
-	ServerSocket skServidor;
+	//ServerSocket skServidor;
 	DataOutputStream mensaje;
 	DataInputStream entrada;
 	File FficheroClan =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClan.txt");
 	File FficheroClient =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClient.txt");
 	File FficheroPasswords =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBasePasswords.txt");
 
+	private Socket skCliente = null;
+
+    public Server(Socket skCliente) {
+	super("Server");
+	
+	this.skCliente = skCliente;
+	
+    }
 	public void run()
 	{
 		try
 		{
-			skServidor = new ServerSocket(PUERTOENTRADA);
+			//skServidor = new ServerSocket(PUERTOENTRADA);
 			System.out.println("Escucho el puerto " + PUERTOENTRADA );
-			for ( int numCli = 0; numCli < 100; numCli++) {
-				Socket skCliente = skServidor.accept();
+			//for ( int numCli = 0; numCli < 100; numCli++) {
+		    //Socket skCliente = skServidor.accept();
+			int numCli = 0;
 				System.out.println("Sirvo al cliente " + numCli);
+				
+				
 				readC (skCliente, numCli);
 				skCliente.close();
-				skServidor.close();
-			}
+				//skServidor.close();
+			
+			
+			//}
 		}
 
 		catch (Exception e)
