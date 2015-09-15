@@ -29,20 +29,13 @@ public class Server extends Thread
 	{
 		try
 		{
-			//skServidor = new ServerSocket(PUERTOENTRADA);
 			System.out.println("Escucho el puerto " + PUERTOENTRADA );
-			//for ( int numCli = 0; numCli < 100; numCli++) {
-		    //Socket skCliente = skServidor.accept();
 			int numCli = 0;
 				System.out.println("Sirvo al cliente " + numCli);
 				
 				
 				readC (skCliente, numCli);
 				skCliente.close();
-				//skServidor.close();
-			
-			
-			//}
 		}
 
 		catch (Exception e)
@@ -58,7 +51,10 @@ public class Server extends Thread
 			DataInputStream flujo = new DataInputStream(entra);
 			String jsondata = flujo.readUTF();
 			Gson o = new Gson();
-
+			if (jsondata.contains("Hola")){
+				writeC(socket, "yess");
+			}
+			
 			if ((jsondata.contains("ClanName"))){
 				ClanClas b = o.fromJson(jsondata, ClanClas.class);
 				if ((TomarObjeto.Leer(FficheroClan, b.getName()))== "No se encontro la palabra solicitada"){

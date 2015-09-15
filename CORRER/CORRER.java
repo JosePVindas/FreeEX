@@ -26,7 +26,6 @@ public class CORRER {
 		System.out.println("Escucho el puerto " + PUERTOENTRADA);
 		
 		while (true) {
-			 System.out.println("no");
 			 Socket skCliente = skServidor.accept();
 		     Thread t = new Server(skCliente);
 		     t.run();
