@@ -14,10 +14,9 @@ public class TomarObjeto{
 				String Slinea;  
 				while((Slinea=Flee.readLine())!=null) {
 					if (Slinea.contains(Satigualinea)){
-						System.out.println("hola");
 						return Slinea;
 					}
-				}  
+				}
 				Flee.close(); 
 			}else{  
 				System.out.println("Fichero No Existe");  
