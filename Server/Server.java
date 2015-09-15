@@ -11,7 +11,6 @@ public class Server extends Thread
 {
 	final int PUERTOENTRADA = 8080;
 	
-	
     ServerSocket skServidor;
     DataOutputStream mensaje;
     DataInputStream entrada;
@@ -31,7 +30,7 @@ public class Server extends Thread
 	        	 //readC (skCliente, numCli);
         		
 	        	 /////////////////////////////////////////////////////////////
-        		 String q = Modificar.Leer(FficheroClan, "JOAO");
+        		 String q = Modificar.Leer(FficheroClan, "GaboClan");
         		 Gson o = new Gson();
         		 System.out.println(q);
         		 
@@ -55,18 +54,9 @@ public class Server extends Thread
     {
     	try 
     	{
-    		
     		InputStream entra = socket.getInputStream();
             DataInputStream flujo = new DataInputStream(entra);
             String jsondata = flujo.readUTF();
-            /*Gson o = new Gson();
-	   		System.out.println(jsondata);
-	   		
-	   		ClanClas b = o.fromJson(jsondata, ClanClas.class);
-	   		
-	   		 
-	   		System.out.println(b.getName());**/
-	   		
 	   		WriteTXT.EcribirFichero(FficheroClan, jsondata);
             
             /*
@@ -78,6 +68,7 @@ public class Server extends Thread
             	WriteTXT.EcribirFichero(FficheroClient, jsondata);
             }
             **/
+	   		
     	}
     	catch (Exception e)
         {
