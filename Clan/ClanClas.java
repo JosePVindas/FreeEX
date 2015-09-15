@@ -2,7 +2,7 @@ package Clan;
 
 public class ClanClas {
 	
-	private String name;
+	private String ClanName;
 	private String Imag;
 	private String leader;
 	private int days = 0;
@@ -11,7 +11,7 @@ public class ClanClas {
 	
 
 	public ClanClas(String Name, String Image, String Leader, int Days, String Clients, String Request) {
-		this.name = Name;
+		this.ClanName = Name;
 		this.Imag = Image;
 		this.leader = Leader;
 		this.days = Days;
@@ -21,10 +21,10 @@ public class ClanClas {
 	
 	
 	public String getName() {
-		return name;
+		return ClanName;
 	}
 	public void setName(String Name) {
-		this.name = Name;
+		this.ClanName = Name;
 	}
 		
 	public void setImage(String Image) {

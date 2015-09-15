@@ -25,6 +25,7 @@ public class Server extends Thread
     DataInputStream entrada;
     File FficheroClan =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClan.txt");
     File FficheroClient =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClient.txt");
+    File FficheroPasswords =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBasePasswords.txt");
     
     public void run()
     {
@@ -36,14 +37,16 @@ public class Server extends Thread
         		 Socket skCliente = skServidor.accept();
         		 System.out.println("Sirvo al cliente " + numCli);
 	        	 readC (skCliente, numCli);
-        		 /////////////////////////////////////////////////////////////
-        		 //String q = Modificar(FficheroClan, "Gabriel");
-        		 //Gson o = new Gson();
-        		 //System.out.println(q);
+        		
+	        	 /////////////////////////////////////////////////////////////
+        		 String q = Modificar(FficheroClan, "Gabriel");
+        		 Gson o = new Gson();
+        		 System.out.println(q);
         		 
-        		 //ClanClas b = o.fromJson(, ClanClas.class);
+        		 ClanClas b = o.fromJson(q, ClanClas.class);
         		 
-        		 //System.out.println(b.getName());
+        		 System.out.println(b.getName());
+	        	 
 	        	 writeC (skCliente, numCli);
 	        	 skCliente.close();
 	        	 skServidor.close();
@@ -71,7 +74,8 @@ public class Server extends Thread
 	   		
 	   		 
 	   		System.out.println(b.getName());
-       	 
+	   		
+	   		WriteTXT.EcribirFichero(FficheroClan, jsondata);
             
             /*
             if ((jsondata.contains("ClanName"))){
@@ -93,7 +97,7 @@ public class Server extends Thread
     	try 
     	{
     		DataOutputStream flujoc= new DataOutputStream(socket.getOutputStream());
-       	    flujoc.writeUTF( "Hola cliente " + numCli);
+       	    flujoc.writeUTF("Hola cliente " + numCli);
 
     	}
     	catch (Exception e)

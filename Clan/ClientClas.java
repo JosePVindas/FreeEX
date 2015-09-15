@@ -2,7 +2,7 @@ package Clan;
 
 public class ClientClas {
 	
-	private String name;
+	private String ClientName;
 	private String password;
 	private String range = "Recluta";
 	private int positionx;
@@ -13,7 +13,7 @@ public class ClientClas {
 	
 
 	public ClientClas(String Name, String Password, String Range, int Positionx, int Positiony, String Possessiona, String Possessiond, String Action) {
-		this.name = Name;
+		this.ClientName = Name;
 		this.password = Password;
 		this.range = Range;
 		this.positionx = Positionx;
@@ -24,11 +24,11 @@ public class ClientClas {
 	}
 	
 	public String getName() {
-		return name;
+		return ClientName;
 	}
 	
 	public void setName(String Name) {
-		this.name = Name;
+		this.ClientName = Name;
 	}
 	
 	public void setPassword(String Password) {
