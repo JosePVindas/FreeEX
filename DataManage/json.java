@@ -1,4 +1,6 @@
 package DataManage;
+public class json {
+}
 
 /////////////////////////////////////////////////////////////
 /*String q = Modificar(FficheroClan, "Gabriel");

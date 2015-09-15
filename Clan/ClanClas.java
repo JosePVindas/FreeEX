@@ -19,7 +19,6 @@ public class ClanClas {
 		this.Request = Request;
 	}
 	
-	
 	public String getName() {
 		return ClanName;
 	}

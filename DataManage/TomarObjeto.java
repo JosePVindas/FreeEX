@@ -4,9 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 
-public class Modificar{
-	public static String Leer(File FficheroAntiguo, String Satigualinea){          
-		try {  
+public class TomarObjeto{
+	public static String Leer (File FficheroAntiguo, String Satigualinea){          
+		try {
 			/*Si existe el fichero inical*/  
 			if(FficheroAntiguo.exists()){  
 				/*Abro un flujo de lectura*/  
@@ -14,11 +14,11 @@ public class Modificar{
 				String Slinea;  
 				while((Slinea=Flee.readLine())!=null) {
 					if (Slinea.contains(Satigualinea)){
+						System.out.println("hola");
 						return Slinea;
 					}
 				}  
 				Flee.close(); 
-
 			}else{  
 				System.out.println("Fichero No Existe");  
 			}  
@@ -26,6 +26,6 @@ public class Modificar{
 			/*Captura un posible error y le imprime en pantalla*/   
 			System.out.println(ex.getMessage());  
 		}
-		return "Error";  
+		return "No se encontro la palabra solicitada";
 	}
 }

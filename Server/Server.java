@@ -27,21 +27,18 @@ public class Server extends Thread
             for ( int numCli = 0; numCli < 4; numCli++) {
         		 Socket skCliente = skServidor.accept();
         		 System.out.println("Sirvo al cliente " + numCli);
-	        	 //readC (skCliente, numCli);
+	        	 readC (skCliente, numCli);
         		
-	        	 /////////////////////////////////////////////////////////////
-        		 String q = Modificar.Leer(FficheroClan, "GaboClan");
+////////////////////////////////////////////////////////////////////////////////////////////////////
+        		 String q = TomarObjeto.Leer(FficheroClan, "Gaboclan");
         		 Gson o = new Gson();
         		 System.out.println(q);
-        		 
         		 ClanClas b = o.fromJson(q, ClanClas.class);
-        		 
         		 System.out.println(b.getImage());
-	        	 
+////////////////////////////////////////////////////////////////////////////////////////////////////
 	        	 writeC (skCliente, numCli);
 	        	 skCliente.close();
 	        	 skServidor.close();
-        	///////////////////////////////////////////////////////////////////
             }
         }
         
@@ -57,9 +54,7 @@ public class Server extends Thread
     		InputStream entra = socket.getInputStream();
             DataInputStream flujo = new DataInputStream(entra);
             String jsondata = flujo.readUTF();
-	   		WriteTXT.EcribirFichero(FficheroClan, jsondata);
             
-            /*
             if ((jsondata.contains("ClanName"))){
             	WriteTXT.EcribirFichero(FficheroClan, jsondata);
             	
@@ -67,7 +62,6 @@ public class Server extends Thread
             if (jsondata.contains("ClientName")){
             	WriteTXT.EcribirFichero(FficheroClient, jsondata);
             }
-            **/
 	   		
     	}
     	catch (Exception e)
