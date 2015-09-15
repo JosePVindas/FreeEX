@@ -2,6 +2,8 @@ package Server;
 import java.net.*;
 import com.google.gson.Gson;
 import Clan.ClanClas;
+import Clan.ClientClas;
+
 import java.io.*;
 import DataManage.*;
 
@@ -44,39 +46,30 @@ public class Server extends Thread
 			InputStream entra = socket.getInputStream();
 			DataInputStream flujo = new DataInputStream(entra);
 			String jsondata = flujo.readUTF();
-			
-			jsondata.startsWith("vindas");
-			
-			if ((jsondata.contains("CreateClan"))){
-				WriteTXT.EcribirFichero(FficheroClan, jsondata);
+			Gson o = new Gson();
+
+			if ((jsondata.contains("ClanName"))){
+				ClanClas b = o.fromJson(jsondata, ClanClas.class);
 			}
 			
 			if (jsondata.contains("ClientName")){
-				WriteTXT.EcribirFichero(FficheroClient, jsondata);
-			}
-			
-			if (jsondata.contains("newlogin")){
+				ClientClas b = o.fromJson(jsondata, ClientClas.class);
 				
-				
-				String a = jsondata.split(",");
-			
-				if ((TomarObjeto.Leer(FficheroPasswords, "v"))== "no se"){
-					writeC(socket, "yeahh");
+				if (b.getAction()=="newlogin"){
+					if ((TomarObjeto.Leer(FficheroClient, b.getName()))!= "No se encontro la palabra solicitada"){
+						WriteTXT.EcribirFichero(FficheroClient, jsondata);
+						writeC(socket, "Registrado");
+						
+					} else {
+						writeC(socket, "Ya estas registrado");
+					}
 				}
-				
-				if ((TomarObjeto.Leer(FficheroPasswords, (jsondata.replaceAll("newlogin", " ")))) == "No se encontro la palabra solicitada"){
-					WriteTXT.EcribirFichero(FficheroPasswords, (jsondata.replaceAll("newlogin", " ")));
-					writeC(socket, "Registrado");
-				} else {
-					writeC(socket, "Ya estas registrado");
-				}
-			}
-				
-			if (jsondata.contains("login")){
-				if ((TomarObjeto.Leer(FficheroPasswords, jsondata.replaceAll("login", " "))) == "No se encontro la palabra solicitada"){
-					writeC(socket, "No te has registrado");
-				} else {
-					writeC(socket, "De nuevo por aqui");
+				if (b.getAction()=="login"){
+					if ((TomarObjeto.Leer(FficheroPasswords, b.getName()+","+b.getPassword()) == "No se encontro la palabra solicitada")){
+						writeC(socket, "No te has registrado");
+					} else {
+						writeC(socket, "De nuevo por aqui");
+					}
 				}
 			}
 			
