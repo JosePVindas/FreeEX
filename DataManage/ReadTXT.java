@@ -5,7 +5,7 @@ public class ReadTXT
 {
 	/*Función que lee el contenido de un fichero de texto 
 	*Parámetro:Ffichero. Objeto de la clase file donde se va a leer*/      
-	public static  void LeerFichero(File Ffichero){  
+	public static void LeerFichero(File Ffichero){  
 	   try {  
 	       /*Si existe el fichero*/  
 	       if(Ffichero.exists()){  

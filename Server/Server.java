@@ -1,16 +1,8 @@
-/*
-{“StringClanName”: GABOCLAN, “ImageEmblem”: Image, “StringLeader”: “Gabriel”, “IntDays”: 3, “ImageRelic”: Image, “ObjectsClients”: [{“Gabriel”: get.position}, {“Pablo”: get.position}], “StringRequest”: “Accion”}
-{“ClienteName”: “Gabo”, “StringPassword”: “CODE”, “Contributions”: [“IntResource1”: 23, “IntResource2”: 45, “IntResource3”: 45, “IntResource4”: 47], “StringAction”: “Accion”}
-  */
-
 package Server;
 import java.net.*;
 import java.util.ArrayList;
-
 import com.google.gson.Gson;
-
 import Clan.ClanClas;
-
 import java.io.*;
 import DataManage.*;
 import net.sf.json.JSONObject;
@@ -36,16 +28,16 @@ public class Server extends Thread
             for ( int numCli = 0; numCli < 4; numCli++) {
         		 Socket skCliente = skServidor.accept();
         		 System.out.println("Sirvo al cliente " + numCli);
-	        	 readC (skCliente, numCli);
+	        	 //readC (skCliente, numCli);
         		
 	        	 /////////////////////////////////////////////////////////////
-        		 String q = Modificar(FficheroClan, "Gabriel");
+        		 String q = Modificar.Leer(FficheroClan, "JOAO");
         		 Gson o = new Gson();
         		 System.out.println(q);
         		 
         		 ClanClas b = o.fromJson(q, ClanClas.class);
         		 
-        		 System.out.println(b.getName());
+        		 System.out.println(b.getImage());
 	        	 
 	        	 writeC (skCliente, numCli);
 	        	 skCliente.close();
@@ -67,13 +59,13 @@ public class Server extends Thread
     		InputStream entra = socket.getInputStream();
             DataInputStream flujo = new DataInputStream(entra);
             String jsondata = flujo.readUTF();
-            Gson o = new Gson();
+            /*Gson o = new Gson();
 	   		System.out.println(jsondata);
 	   		
 	   		ClanClas b = o.fromJson(jsondata, ClanClas.class);
 	   		
 	   		 
-	   		System.out.println(b.getName());
+	   		System.out.println(b.getName());**/
 	   		
 	   		WriteTXT.EcribirFichero(FficheroClan, jsondata);
             
@@ -106,28 +98,5 @@ public class Server extends Thread
         }
     }
     
-    public String Modificar(File FficheroAntiguo, String Satigualinea){          
-        try {  
-            /*Si existe el fichero inical*/  
-            if(FficheroAntiguo.exists()){  
-                /*Abro un flujo de lectura*/  
-                BufferedReader Flee= new BufferedReader(new FileReader(FficheroAntiguo));  
-                String Slinea;  
-         
-                while((Slinea=Flee.readLine())!=null) {
-                	if (Slinea.contains(Satigualinea)){
-                		return Slinea;
-                	}
-                }  
-                Flee.close(); 
-                
-            }else{  
-                System.out.println("Fichero No Existe");  
-            }  
-        } catch (Exception ex) {  
-            /*Captura un posible error y le imprime en pantalla*/   
-             System.out.println(ex.getMessage());  
-        }
-		return null;  
-    }
+    
 }

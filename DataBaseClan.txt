@@ -1,1 +1,1 @@
-{"ClanName": "Gaboclan", "Image": "COlor", "Leader": "Gabriel", int: 0, "Clients": "Gabriel", "Request": doo};
+{"ClanName": "Gaboclan", "Imag": "COlor", "leader": "Gabriel", "days": "0", "clients": "Gabriel", "Request": "doo"}

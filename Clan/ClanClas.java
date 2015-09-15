@@ -5,12 +5,12 @@ public class ClanClas {
 	private String ClanName;
 	private String Imag;
 	private String leader;
-	private int days = 0;
+	private String days = "0";
 	private String clients;
 	private String Request;	
 	
 
-	public ClanClas(String Name, String Image, String Leader, int Days, String Clients, String Request) {
+	public ClanClas(String Name, String Image, String Leader, String Days, String Clients, String Request) {
 		this.ClanName = Name;
 		this.Imag = Image;
 		this.leader = Leader;
@@ -43,11 +43,11 @@ public class ClanClas {
 		return leader;
 	}
 	
-	public int getDays() {
+	public String getDays() {
 		return days;
 	}
 	
-	public void setDays(int Days) {
+	public void setDays(String Days) {
 		this.days = Days;
 	}
 	

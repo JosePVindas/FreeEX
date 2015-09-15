@@ -17,8 +17,8 @@ public class cli {
         try {
             sc = new Socket("192.168.15.107", PUERTOENTRADA);
             OutputStream aux = sc.getOutputStream();
-	    DataOutputStream flujo= new DataOutputStream(aux);
-	    String a = "{\"name\": \"Gaboclan\", \"Image\": \"COlor\", \"Leader\": \"Gabriel\", int: 0, \"Clients\": \"Gabriel\", \"Request\": \"doo\"}";
+            DataOutputStream flujo= new DataOutputStream(aux);
+            String a = "{\"name\": \"Gaboclan\", \"Image\": \"COlor\", \"Leader\": \"Gabriel\", int: 0, \"Clients\": \"Gabriel\", \"Request\": \"doo\"}";
             flujo.writeUTF(a);
                      
             InputStream auxc = sc.getInputStream();
