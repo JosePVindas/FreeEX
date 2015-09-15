@@ -1,12 +1,12 @@
 package DataManage;
 
-public class List {
+public class ListClass {
 
 	private Node head;
 	private int listCount;
 	
 	// LinkedList constructor
-	public List()
+	public ListClass()
 	{
 		// this is an empty list, so the reference to the head node
 		// is set to a new node with no data

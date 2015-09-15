@@ -19,8 +19,9 @@ public class CORRER {
 	public static void main(String[] args) {
     	 //File FficheroClient =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClient.txt");
     
-		List l = new List();
-		l.
+		ListClass l = new ListClass();
+		l.add("h");
+		System.out.println(l.size());
 		
     }
 }
