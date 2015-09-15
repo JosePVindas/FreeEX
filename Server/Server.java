@@ -28,9 +28,8 @@ public class Server extends Thread
 				Socket skCliente = skServidor.accept();
 				System.out.println("Sirvo al cliente " + numCli);
 				readC (skCliente, numCli);
-				//writeC (skCliente, "");
 				skCliente.close();
-				//skServidor.close();
+				skServidor.close();
 			}
 		}
 
@@ -50,22 +49,27 @@ public class Server extends Thread
 
 			if ((jsondata.contains("ClanName"))){
 				ClanClas b = o.fromJson(jsondata, ClanClas.class);
+				if ((TomarObjeto.Leer(FficheroClan, b.getName()))== "No se encontro la palabra solicitada"){
+					WriteTXT.EcribirFichero(FficheroClan, jsondata);
+				}else{
+					writeC(socket, "Ya existe un clan con ese nombre");
+				}
 			}
 			
 			if (jsondata.contains("ClientName")){
 				ClientClas b = o.fromJson(jsondata, ClientClas.class);
-				
-				if (b.getAction()=="newlogin"){
-					if ((TomarObjeto.Leer(FficheroClient, b.getName()))!= "No se encontro la palabra solicitada"){
+				if (jsondata.contains("newlogin")){		
+					if ((TomarObjeto.Leer(FficheroClient, b.getName()))== "No se encontro la palabra solicitada"){
 						WriteTXT.EcribirFichero(FficheroClient, jsondata);
 						writeC(socket, "Registrado");
 						
 					} else {
 						writeC(socket, "Ya estas registrado");
 					}
+					
 				}
-				if (b.getAction()=="login"){
-					if ((TomarObjeto.Leer(FficheroPasswords, b.getName()+","+b.getPassword()) == "No se encontro la palabra solicitada")){
+				if (b.getAction().equals("login")){
+					if (((TomarObjeto.Leer(FficheroClient, b.getName()) == "No se encontro la palabra solicitada"))&& ((TomarObjeto.Leer(FficheroClient, b.getPassword()) == "No se encontro la palabra solicitada"))){
 						writeC(socket, "No te has registrado");
 					} else {
 						writeC(socket, "De nuevo por aqui");

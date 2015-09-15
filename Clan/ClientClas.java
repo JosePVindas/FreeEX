@@ -5,14 +5,14 @@ public class ClientClas {
 	private String ClientName;
 	private String password;
 	private String range = "Recluta";
-	private int positionx;
-	private int positiony;
+	private String positionx;
+	private String positiony;
 	private String possessiona;
 	private String possessiond;
 	private String action;
 	
 
-	public ClientClas(String Name, String Password, String Range, int Positionx, int Positiony, String Possessiona, String Possessiond, String Action) {
+	public ClientClas(String Name, String Password, String Range, String Positionx, String Positiony, String Possessiona, String Possessiond, String Action) {
 		this.ClientName = Name;
 		this.password = Password;
 		this.range = Range;
@@ -47,19 +47,19 @@ public class ClientClas {
 		return range;
 	}
 	
-	public int getPosotionx() {
+	public String getPosotionx() {
 		return positionx;
 	}
 	
-	public void setPositionx(int Positionx) {
+	public void setPositionx(String Positionx) {
 		this.positionx = Positionx;
 	}
 	
-	public int getPosotiony() {
+	public String getPosotiony() {
 		return positiony;
 	}
 	
-	public void setPositiony(int Positiony) {
+	public void setPositiony(String Positiony) {
 		this.positiony = Positiony;
 	}
 	

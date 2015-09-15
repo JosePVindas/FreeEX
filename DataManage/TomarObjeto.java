@@ -7,7 +7,7 @@ import java.io.FileReader;
 public class TomarObjeto{
 	public static String Leer (File FficheroAntiguo, String Satigualinea){          
 		try {
-			/*Si existe el fichero inical*/  
+			/*Si existe el fichero inical*/ 
 			if(FficheroAntiguo.exists()){  
 				/*Abro un flujo de lectura*/  
 				BufferedReader Flee= new BufferedReader(new FileReader(FficheroAntiguo));  
