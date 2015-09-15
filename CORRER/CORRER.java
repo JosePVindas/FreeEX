@@ -1,5 +1,6 @@
 package CORRER;
 
+import java.awt.List;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,8 +19,8 @@ public class CORRER {
 	public static void main(String[] args) {
     	 //File FficheroClient =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClient.txt");
     
-		Server s = new Server ();
-		s.run();
+		List l = new List();
+		l.
 		
     }
 }
