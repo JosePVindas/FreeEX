@@ -5,12 +5,14 @@ public class Reliquia {
 		private String Image;
 		private String positionx;
 		private String positiony;
+		private String Clan;
 
-		public Reliquia(String radio, String Imag, String Positionx, String Positiony) {
+		public Reliquia(String radio, String Imag, String Positionx, String Positiony, String clan) {
 			this.Radio = radio;
 			this.Image = Imag;
 			this.positionx = Positionx;
 			this.positiony = Positiony;
+			this.Clan = clan;
 		}
 		
 		public String getImage() {
@@ -43,6 +45,13 @@ public class Reliquia {
 		
 		public void setPositiony(String Positiony) {
 			this.positiony = Positiony;
+		}
+		public String getClan() {
+			return Clan;
+		}
+		
+		public void setClan(String clan) {
+			this.Clan = clan;
 		}
 
 	}

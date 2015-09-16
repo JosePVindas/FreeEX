@@ -8,7 +8,6 @@ public class ClanClas {
 	private String days = "0";
 	private String clients;
 	private String Request;	
-	
 
 	public ClanClas(String Name, String Image, String Leader, String Days, String Clients, String Request) {
 		this.ClanName = Name;

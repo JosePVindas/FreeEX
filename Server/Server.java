@@ -10,7 +10,6 @@ import DataManage.*;
 public class Server extends Thread 
 {
 	final int PUERTOENTRADA = 8080;
-	//ServerSocket skServidor;
 	DataOutputStream mensaje;
 	DataInputStream entrada;
 	File FficheroClan =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClan.txt");
@@ -18,24 +17,20 @@ public class Server extends Thread
 	File FficheroPasswords =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBasePasswords.txt");
 
 	private Socket skCliente = null;
+	public Server(Socket skCliente) {
+		super("Server");
+		this.skCliente = skCliente;
+	}
 
-    public Server(Socket skCliente) {
-	super("Server");
-	
-	this.skCliente = skCliente;
-	
-    }
 	public void run()
 	{
 		try
 		{
 			System.out.println("Escucho el puerto " + PUERTOENTRADA );
-			int numCli = 0;
-				System.out.println("Sirvo al cliente " + numCli);
-				
-				
-				readC (skCliente, numCli);
-				skCliente.close();
+			System.out.println("Sirvo a un cliente");
+			readC (skCliente);
+
+			skCliente.close();
 		}
 
 		catch (Exception e)
@@ -43,7 +38,7 @@ public class Server extends Thread
 			System.out.println(e.getMessage());
 		}    
 	} 
-	protected void readC (Socket socket, int numCli)  
+	protected void readC (Socket socket)  
 	{
 		try 
 		{
@@ -54,7 +49,7 @@ public class Server extends Thread
 			if (jsondata.contains("Hola")){
 				writeC(socket, "yess");
 			}
-			
+
 			if ((jsondata.contains("ClanName"))){
 				ClanClas b = o.fromJson(jsondata, ClanClas.class);
 				if ((TomarObjeto.Leer(FficheroClan, b.getName()))== "No se encontro la palabra solicitada"){
@@ -63,18 +58,17 @@ public class Server extends Thread
 					writeC(socket, "Ya existe un clan con ese nombre");
 				}
 			}
-			
+
 			if (jsondata.contains("ClientName")){
 				ClientClas b = o.fromJson(jsondata, ClientClas.class);
 				if (jsondata.contains("newlogin")){		
 					if ((TomarObjeto.Leer(FficheroClient, b.getName()))== "No se encontro la palabra solicitada"){
 						WriteTXT.EcribirFichero(FficheroClient, jsondata);
 						writeC(socket, "Registrado");
-						
 					} else {
 						writeC(socket, "Ya estas registrado");
 					}
-					
+
 				}
 				if (b.getAction().equals("login")){
 					if (((TomarObjeto.Leer(FficheroClient, b.getName()) == "No se encontro la palabra solicitada"))&& ((TomarObjeto.Leer(FficheroClient, b.getPassword()) == "No se encontro la palabra solicitada"))){
@@ -83,8 +77,24 @@ public class Server extends Thread
 						writeC(socket, "De nuevo por aqui");
 					}
 				}
+				if (b.getAction().equals("CrearArma")){
+					
+				}
+				if (b.getAction().equals("CrearDefensa")){
+
+				}
+				if (b.getAction().equals("UnirseaClan")){
+
+				}
+				if (b.getAction().equals("PedirUbicaciones")){
+
+				}
+				if (b.getAction().equals("Votar")){
+
+				}
+
 			}
-			
+
 		}
 		catch (Exception e)
 		{

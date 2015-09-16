@@ -10,9 +10,9 @@ public class ClientClas {
 	private String possessiona;
 	private String possessiond;
 	private String action;
-	
+	private String Clan;
 
-	public ClientClas(String Name, String Password, String Range, String Positionx, String Positiony, String Possessiona, String Possessiond, String Action) {
+	public ClientClas(String Name, String Password, String Range, String Positionx, String Positiony, String Possessiona, String Possessiond, String Action, String clan) {
 		this.ClientName = Name;
 		this.password = Password;
 		this.range = Range;
@@ -21,6 +21,7 @@ public class ClientClas {
 		this.possessiona = Possessiona;
 		this.possessiond = Possessiond;
 		this.action = Action;
+		this.Clan = clan;
 	}
 	
 	public String getName() {
@@ -82,5 +83,12 @@ public class ClientClas {
 	}
 	public String getAction() {
 		return action;
+	}
+	public String getClan() {
+		return Clan;
+	}
+	
+	public void setClan(String clan) {
+		this.Clan = clan;
 	}
 }
