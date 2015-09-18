@@ -1,12 +1,12 @@
 package DataManage;
 
-public class ListClass {
+public class Liclas {
 
 	private Node head;
 	private int listCount;
 	
 	// LinkedList constructor
-	public ListClass()
+	public Liclas()
 	{
 		// this is an empty list, so the reference to the head node
 		// is set to a new node with no data
@@ -95,6 +95,7 @@ public class ListClass {
 	{
 		Node current = head.getNext();
 		String output = "";
+		
 		while(current != null)
 		{
 			output += "[" + current.getData().toString() + "]";

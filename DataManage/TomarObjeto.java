@@ -23,7 +23,7 @@ public class TomarObjeto{
 			}  
 		} catch (Exception ex) {  
 			/*Captura un posible error y le imprime en pantalla*/   
-			System.out.println(ex.getMessage());  
+			System.out.println(ex.getMessage());
 		}
 		return "No se encontro la palabra solicitada";
 	}

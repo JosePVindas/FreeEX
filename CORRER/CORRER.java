@@ -14,6 +14,7 @@ import java.util.*;
 import com.google.gson.Gson;
 
 import Clan.ClanClas;
+import Clan.ClientClas;
 import DataManage.*;
 import Server.Server;
 public class CORRER {
@@ -29,6 +30,17 @@ public class CORRER {
 			 Socket skCliente = skServidor.accept();
 		     Thread t = new Server(skCliente);
 		     t.run();
-		   }
+		}
+		
+		//Liclas c = new Liclas ();
+		//c.add("si");
+		//c.add("no");
+		//c.add("oi");
+		
+		//ClanClas a = new ClanClas("ganoclan", "nope", "gabriel", "0", c, "dooo");
+		//System.out.println(a.getClients(2));
+		//System.out.println(a.);
+		//ClanClas d = new ClanClas("daclan", "nope", "Dalberth", "0", , "doo")
+		   
     }
 }

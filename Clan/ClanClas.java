@@ -1,15 +1,17 @@
 package Clan;
 
+import DataManage.Liclas;
+
 public class ClanClas {
 	
 	private String ClanName;
 	private String Imag;
 	private String leader;
 	private String days = "0";
-	private String clients;
+	private Liclas clients = new Liclas();
 	private String Request;	
 
-	public ClanClas(String Name, String Image, String Leader, String Days, String Clients, String Request) {
+	public ClanClas(String Name, String Image, String Leader, String Days, Liclas Clients, String Request) {
 		this.ClanName = Name;
 		this.Imag = Image;
 		this.leader = Leader;
@@ -49,12 +51,12 @@ public class ClanClas {
 		this.days = Days;
 	}
 	
-	public String getClients() {
-		return clients;
+	public Object getClients(int i) {
+		return clients.get(i);
 	}
 	
 	public void setClients(String Clients) {
-		this.clients = Clients;
+		this.clients.add(Clients);;
 	}
 	
 	public String getRequest() {
