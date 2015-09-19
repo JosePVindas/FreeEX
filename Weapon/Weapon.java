@@ -1,5 +1,5 @@
 package Weapon;
-
+/**Clase abstracta para la creacion de armas en el juego, asi como get y set de sus atributos*/
 public abstract class Weapon {
 	byte resource;
 	int Ctime;

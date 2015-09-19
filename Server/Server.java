@@ -6,56 +6,33 @@ import Clan.ClientClas;
 
 import java.io.*;
 import DataManage.*;
-
+/**Corresponde a la funcion principal del servidor, donde se recibe la informacion proveniente del cliente y se toman las deciciones de acuerdo a lo solicitado*/
 public class Server extends Thread 
 {
 	final int PUERTOENTRADA = 8080;
 	DataOutputStream mensaje;
 	DataInputStream entrada;
-	//Rutas de creacion de los archivos
+	//Rutas de creacion de los archivos .txt
 	File FficheroClan =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClan.txt");
 	File FficheroClient =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClient.txt");
 	File FficheroPasswords =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBasePasswords.txt");
 
 	private Socket skCliente = null;
+	/* Funcion que permite establecer el socket desde la funcion main**/
 	
 	public Server(Socket skCliente) {
 		super("Server");
 		this.skCliente = skCliente;
 	}
-	//Funcion principal donde empieza a correr el server
+	/*Funcion principal donde empieza a correr el server**/
+	
 	public void run()
 	{
 		try
 		{
 			System.out.println("Escucho el puerto " + PUERTOENTRADA );
 			System.out.println("Sirvo a un cliente");
-			//readC (skCliente);
-			
-	/////////////////////////////////////////////////////////////////////////////////
-			InputStream entra = skCliente.getInputStream();
-			DataInputStream flujo = new DataInputStream(entra);
-			int a = 10;
-			while (true){
-				String jsondata = flujo.readUTF();
-				System.out.println(jsondata);
-				a = a - 1;
-				System.out.println(a);
-				if (jsondata.contains("salir")){
-					break;
-				}
-			}
-	///////////////////////////////////////////////////////////////////////////////
-			DataOutputStream flujoc= new DataOutputStream(skCliente.getOutputStream());
-			int i = 10;
-			while (i >0){
-				flujoc.writeUTF("yes");
-				flujoc.writeUTF("yes");
-				flujoc.writeUTF("salir");
-				i = i - 1;
-				System.out.println(i);
-			}
-	///////////////////////////////////////////////////////////////////////////////
+			readC (skCliente);
 			skCliente.close();
 			
 		}
@@ -65,6 +42,7 @@ public class Server extends Thread
 			System.out.println(e.getMessage());
 		}    
 	} 
+	/* Se encarga de leer los String que provienen desde el cliene y redirecciona de acuerdo a las acciones solicitadas**/
 	protected void readC (Socket socket)  
 	{
 		try 
@@ -76,15 +54,28 @@ public class Server extends Thread
 			
 			if (jsondata.contains("Hola")){
 				System.out.println("leido");
-				writeC(socket, "yess");
+				writeC(socket, "HELLOOOO");
 			}
 
 			if ((jsondata.contains("ClanName"))){
 				ClanClas b = o.fromJson(jsondata, ClanClas.class);
+				
 				if ((TomarObjeto.Leer(FficheroClan, b.getName()))== "No se encontro la palabra solicitada"){
 					WriteTXT.EcribirFichero(FficheroClan, jsondata);
 				}else{
 					writeC(socket, "Ya existe un clan con ese nombre");
+				}
+				
+				if (b.getRequest().equals("doo")){
+					
+					b.setClients("hello");
+					System.out.println(b.toString());
+					WriteTXT.EcribirFichero(FficheroPasswords, b.toString());
+					System.out.println("yess");
+					
+					System.out.println(b.getClients(1));
+					writeC(socket, "daaa");
+					
 				}
 			}
 
@@ -148,6 +139,7 @@ public class Server extends Thread
 			System.out.println(e.getMessage()); 
 		}
 	}
+	/* Esta funcion permite mandar mensajes al socket del cliente, mensajes en forma de Strings**/
 	protected void writeC (Socket socket, String message)   
 	{
 		try 
@@ -161,7 +153,7 @@ public class Server extends Thread
 			System.out.println(e.getMessage()); 
 		}
 	}
-	
+	/* Es la etapa beta de la fucion que permite mandar un mismo mensaje a varios clientes a la vez**/
 	protected void mandarall (Socket socket, String message)   
 	{
 		try 

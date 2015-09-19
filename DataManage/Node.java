@@ -6,10 +6,6 @@ package DataManage;
  * Allows to save information in a single class, to create
  * a Linked List. It saves the data of the node and the 
  * references to the next and previous nodes.
- * 
- * @author Fabian A. Solano Madriz
- * @param <k> Object type to be used in the Node
- * @since September, 2015
  */
 public class Node<k> {
 	private k _data;

@@ -3,7 +3,7 @@ package DataManage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-
+/**Permite tomar una linea de texto en un archivo .txt mediante la busqueda de un pedazo de string que pertenezca a esta. atributos: Archivo por leer, texto por buscar*/
 public class TomarObjeto{
 	public static String Leer (File FficheroAntiguo, String Satigualinea){          
 		try {

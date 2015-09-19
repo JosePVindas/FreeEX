@@ -1,4 +1,5 @@
 package Resources;
+/**Clase abstracta para la generacion de recursos, posee sus atributos y metodos de devolucion y creacion*/
 public abstract class Resource {
 
 	protected String Name;

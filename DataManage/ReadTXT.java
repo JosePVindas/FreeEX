@@ -1,6 +1,6 @@
 package DataManage;
 import java.io.*;
-
+/** Es la clase que permite leer todo un fichero*/
 public class ReadTXT
 {
 	/*Función que lee el contenido de un fichero de texto 

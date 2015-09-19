@@ -1,5 +1,5 @@
 package Armor;
-
+/** Clase abstracta que sirve como molde para la creacion de las defensas del juego*/
 public abstract class Armor {
 	protected int time; 
 	protected int capacity;

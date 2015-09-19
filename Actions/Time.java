@@ -1,5 +1,5 @@
 package Actions;
-
+/**Se encarga de crear los tiempos de creacion en armas, escudos, toma de recursos*/
 public class Time {
 
 	public static void main(String[] args) {

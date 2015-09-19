@@ -1,5 +1,5 @@
 package Clan;
-
+/** Es el molde de las reliquias, posee sus atributos y metodos para accesar a ellos*/
 public class Reliquia {
 		private String Radio;
 		private String Image;

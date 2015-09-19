@@ -1,12 +1,11 @@
 package DataManage;
 
 /*********************************************************** 
- * Modificar un fichero de texto, consiste en leer un archivo 
+ * Modifica un fichero de texto, consiste en leer un archivo 
  *y escribir su con tenido en uno nuevo llamado X, excepto la  
  *linea a modificar que se remplaza con la linea nueva.Luego 
  *se borra el fichero inicial y se renombra el nuevo fichero 
  *con el nombre del archivo inicial  
- *********************************************************** 
  *PARÁMETROS: 
  *FficheroAntiguo:Objeto File del fichero a modificar 
  *Satigualinea:Linea que se busca para modificar 
@@ -62,9 +61,6 @@ public class EditTXT{
         }  
     }  
 /*********************************************************** 
-    Para eliminar un registro dentro del fichero 
-view plainprint?
-
         *Eliminar un registro dentro de un fichero de texto,  
         *consiste en leer un archivo y escribir su contenido en uno  
         *nuevo llamado X, excepto la linea a eliminar.Luego se borra  

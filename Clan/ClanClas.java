@@ -1,7 +1,7 @@
 package Clan;
 
 import DataManage.Liclas;
-
+/** Corresponde a la clase molde de clanes, posee todos sus atributos y los metodos get y set de cada un de ellos*/
 public class ClanClas {
 	
 	private String ClanName;
@@ -52,7 +52,7 @@ public class ClanClas {
 	}
 	
 	public Object getClients(int i) {
-		return clients.get(i);
+		return clients.toString();
 	}
 	
 	public void setClients(String Clients) {
@@ -66,5 +66,9 @@ public class ClanClas {
 	public void setRequest(String Request) {
 		this.Request = Request;
 	}
+	
+	public String toString() {
+	    return "{ClanName: " + getName() +", Imag: "+ getImage() + ", leader: " + getLeader() + ", days: "+ getDays()+ ", clients:"+ getClients(0)+ ", Request:"+ getRequest()+"}";
+	  }
 	
 }

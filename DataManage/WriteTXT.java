@@ -3,7 +3,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
-
+/**Permite escribir un string en una linea de un archivo de texto, como parametros recibe el archivo .txt y la cadena por escribir*/
 public class WriteTXT
 {
 	public static void EcribirFichero(File Ffichero,String SCadena){  

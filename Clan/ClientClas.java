@@ -1,5 +1,5 @@
 package Clan;
-
+/** Clase cliente, posee todos lo atributos y metodos que de un cliente, como gets y set para cada uno de ellos*/
 public class ClientClas {
 	
 	private String ClientName;

@@ -1,5 +1,5 @@
 package Actions;
-
+/** Esta clase se encarga de llevar un tiempo en el server, util para controlar los dis de creacion de los clanes, asi como armas, escudos*/
 public class Schedule {
 
 	public static void main(String[] args) {

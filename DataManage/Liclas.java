@@ -1,11 +1,12 @@
 package DataManage;
-
+/** Clase lista que usa la clase Nodo, posee metodos de agregar objetos por o sin indice, eliminar objetos por indice, asi como obtener la logitud de una lista*/
 public class Liclas {
 
 	private Node head;
 	private int listCount;
 	
 	// LinkedList constructor
+	
 	public Liclas()
 	{
 		// this is an empty list, so the reference to the head node

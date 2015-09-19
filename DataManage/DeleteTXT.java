@@ -1,7 +1,7 @@
 package DataManage;
 
 import java.io.File;
-
+/** Esta clase corresponde al metodo de eliminar todo un archivo de texto de los cuales se guarda la informacio, util cuando se esta editando algo*/
 public class DeleteTXT{
 
 	public static  void BorrarFichero(File Ffichero){  
