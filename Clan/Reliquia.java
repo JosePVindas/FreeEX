@@ -31,7 +31,7 @@ public class Reliquia {
 			this.Radio = radio;
 		}
 		
-		public String getPosotionx() {
+		public String getPositionx() {
 			return positionx;
 		}
 		
@@ -39,7 +39,7 @@ public class Reliquia {
 			this.positionx = Positionx;
 		}
 		
-		public String getPosotiony() {
+		public String getPositiony() {
 			return positiony;
 		}
 		
@@ -53,5 +53,9 @@ public class Reliquia {
 		public void setClan(String clan) {
 			this.Clan = clan;
 		}
+		/** Se encarga de convertir en un string todo el objeto Reliquia*/
+		public String toString() {
+		    return "{Radio: " + getRadio() +", Image: "+ getImage() + ", positionx: " + getPositionx() +", positiony: " + getPositiony() + ", Clan: "+ getClan()+ "}";
+		  }
 
 	}

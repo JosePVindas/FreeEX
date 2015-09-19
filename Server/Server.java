@@ -18,13 +18,13 @@ public class Server extends Thread
 	File FficheroPasswords =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBasePasswords.txt");
 
 	private Socket skCliente = null;
-	/* Funcion que permite establecer el socket desde la funcion main**/
+	/** Funcion que permite establecer el socket desde la funcion main*/
 	
 	public Server(Socket skCliente) {
 		super("Server");
 		this.skCliente = skCliente;
 	}
-	/*Funcion principal donde empieza a correr el server**/
+	/**Funcion principal donde empieza a correr el server*/
 	
 	public void run()
 	{

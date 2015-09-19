@@ -48,7 +48,7 @@ public class ClientClas {
 		return range;
 	}
 	
-	public String getPosotionx() {
+	public String getPositionx() {
 		return positionx;
 	}
 	
@@ -56,7 +56,7 @@ public class ClientClas {
 		this.positionx = Positionx;
 	}
 	
-	public String getPosotiony() {
+	public String getPositiony() {
 		return positiony;
 	}
 	
@@ -91,4 +91,8 @@ public class ClientClas {
 	public void setClan(String clan) {
 		this.Clan = clan;
 	}
+	/** Se encarga de convertir en un string todo el objeto cliente*/
+	public String toString() {
+	    return "{ClientName: " + getName() +", password: "+ getPassword() + ", range: " + getRange() + ", positionx: "+ getPositionx()+ ", positiony: "+ getPositiony()+ ", possessiona:"+ getPossessiona()+", possessiond:"+ getPossessiond()+", action:"+ getAction()+", Clan:"+ getClan()+"}";
+	  }
 }
