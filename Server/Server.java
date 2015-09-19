@@ -139,7 +139,7 @@ public class Server extends Thread
 			System.out.println(e.getMessage()); 
 		}
 	}
-	/* Esta funcion permite mandar mensajes al socket del cliente, mensajes en forma de Strings**/
+	/** Esta funcion permite mandar mensajes al socket del cliente, mensajes en forma de Strings*/
 	protected void writeC (Socket socket, String message)   
 	{
 		try 
@@ -153,7 +153,7 @@ public class Server extends Thread
 			System.out.println(e.getMessage()); 
 		}
 	}
-	/* Es la etapa beta de la fucion que permite mandar un mismo mensaje a varios clientes a la vez**/
+	/** Es la etapa beta de la fucion que permite mandar un mismo mensaje a varios clientes a la vez*/
 	protected void mandarall (Socket socket, String message)   
 	{
 		try 
