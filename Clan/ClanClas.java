@@ -66,7 +66,7 @@ public class ClanClas {
 	public void setRequest(String Request) {
 		this.Request = Request;
 	}
-	
+	/** Se encarga de convertir en un string todo el objeto clan*/
 	public String toString() {
 	    return "{ClanName: " + getName() +", Imag: "+ getImage() + ", leader: " + getLeader() + ", days: "+ getDays()+ ", clients:"+ getClients(0)+ ", Request:"+ getRequest()+"}";
 	  }

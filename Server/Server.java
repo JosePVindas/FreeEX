@@ -42,7 +42,7 @@ public class Server extends Thread
 			System.out.println(e.getMessage());
 		}    
 	} 
-	/* Se encarga de leer los String que provienen desde el cliene y redirecciona de acuerdo a las acciones solicitadas**/
+	/** Se encarga de leer los String que provienen desde el cliene y redirecciona de acuerdo a las acciones solicitadas*/
 	protected void readC (Socket socket)  
 	{
 		try 
