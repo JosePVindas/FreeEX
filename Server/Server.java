@@ -13,7 +13,7 @@ public class Server extends Thread
 	DataOutputStream mensaje;
 	DataInputStream entrada;
 	//Rutas de creacion de los archivos .txt
-	File FficheroClan =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClan.txt");
+	File FficheroClan =new File("C:/Users/Jose P Vindas/Documents/DataBaseClan.txt");
 	File FficheroClient =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClient.txt");
 	File FficheroPasswords =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBasePasswords.txt");
 
@@ -28,19 +28,25 @@ public class Server extends Thread
 	
 	public void run()
 	{
+		int h = 1;
+		
 		try
 		{
 			System.out.println("Escucho el puerto " + PUERTOENTRADA );
 			System.out.println("Sirvo a un cliente");
+			PrintStream conect = new PrintStream(skCliente.getOutputStream());
+			conect.println("Hello client 0!!");
 			readC (skCliente);
-			skCliente.close();
+			
+			//skCliente.close();
 			
 		}
 
 		catch (Exception e)
 		{
 			System.out.println(e.getMessage());
-		}    
+			
+		}  
 	} 
 	/** Se encarga de leer los String que provienen desde el cliene y redirecciona de acuerdo a las acciones solicitadas*/
 	protected void readC (Socket socket)  
@@ -52,9 +58,15 @@ public class Server extends Thread
 			String jsondata = flujo.readUTF();
 			Gson o = new Gson();
 			
+			if (jsondata.contains("hola")){
+				System.out.println("leido");
+				writeC(skCliente, "HELLOOOO");
+			}
+
+			
 			if (jsondata.contains("Hola")){
 				System.out.println("leido");
-				writeC(socket, "HELLOOOO");
+				writeC(skCliente, "HELLOOOO");
 			}
 
 			if ((jsondata.contains("ClanName"))){
@@ -63,7 +75,7 @@ public class Server extends Thread
 				if ((TomarObjeto.Leer(FficheroClan, b.getName()))== "No se encontro la palabra solicitada"){
 					WriteTXT.EcribirFichero(FficheroClan, jsondata);
 				}else{
-					writeC(socket, "Ya existe un clan con ese nombre");
+					writeC(skCliente, "Ya existe un clan con ese nombre");
 				}
 				
 				if (b.getRequest().equals("doo")){
