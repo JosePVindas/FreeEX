@@ -8,10 +8,10 @@ public class ClanClas {
 	private String Imag;
 	private String leader;
 	private String days = "0";
-	private Liclas clients = new Liclas();
+	private String clients;
 	private String Request;	
 
-	public ClanClas(String Name, String Image, String Leader, String Days, Liclas Clients, String Request) {
+	public ClanClas(String Name, String Image, String Leader, String Days, String Clients, String Request) {
 		this.ClanName = Name;
 		this.Imag = Image;
 		this.leader = Leader;
@@ -55,9 +55,9 @@ public class ClanClas {
 		return clients.toString();
 	}
 	
-	public void setClients(String Clients) {
+	/*public void setClients(String Clients) {
 		this.clients.add(Clients);;
-	}
+	}*/
 	
 	public String getRequest() {
 		return Request;

@@ -12,10 +12,10 @@ public class Server extends Thread
 	final int PUERTOENTRADA = 8080;
 	DataOutputStream mensaje;
 	DataInputStream entrada;
-	//Rutas de creacion de los archivos .txt
-	File FficheroClan =new File("C:/Users/Jose P Vindas/Documents/DataBaseClan.txt");
-	File FficheroClient =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBaseClient.txt");
-	File FficheroPasswords =new File("C:/Users/Gabriel/Documents/EclipseProjects/Pandora/Pandora-Under-Attack/DataBasePasswords.txt");
+	/**Rutas de creacion de los archivos .txt*/
+	File FficheroClan =new File("C:/Users/Jose P Vindas/Documents/DataBase/DataBaseClan.txt");
+	File FficheroClient =new File("C:/Users/Jose P Vindas/Documents/DataBase/DataBaseClient.txt");
+	File FficheroPasswords =new File("C:/Users/Jose P Vindas/Documents/DataBase/DataBasePasswords.txt");
 
 	private Socket skCliente = null;
 	/** Funcion que permite establecer el socket desde la funcion main*/
@@ -34,11 +34,13 @@ public class Server extends Thread
 		{
 			System.out.println("Escucho el puerto " + PUERTOENTRADA );
 			System.out.println("Sirvo a un cliente");
-			PrintStream conect = new PrintStream(skCliente.getOutputStream());
-			conect.println("Hello client 0!!");
+			
+			
 			readC (skCliente);
 			
-			//skCliente.close();
+			
+			
+			skCliente.close();
 			
 		}
 
@@ -58,18 +60,23 @@ public class Server extends Thread
 			String jsondata = flujo.readUTF();
 			Gson o = new Gson();
 			
-			if (jsondata.contains("hola")){
-				System.out.println("leido");
-				writeC(skCliente, "HELLOOOO");
+			if (jsondata.contains("Joao")){
+				System.out.println("POR FIIIIN PERRAAAAAAA!!");
+				writeC(socket, "HELLOOOO");
 			}
 
 			
 			if (jsondata.contains("Hola")){
 				System.out.println("leido");
-				writeC(skCliente, "HELLOOOO");
+				writeC(socket, "HELLOOOO");
+			}
+			if (jsondata.contains("Jose")){
+				System.out.println(jsondata);
+				writeC(socket, "HELLOOOO");
 			}
 
 			if ((jsondata.contains("ClanName"))){
+				System.out.println(jsondata);
 				ClanClas b = o.fromJson(jsondata, ClanClas.class);
 				
 				if ((TomarObjeto.Leer(FficheroClan, b.getName()))== "No se encontro la palabra solicitada"){
@@ -80,7 +87,7 @@ public class Server extends Thread
 				
 				if (b.getRequest().equals("doo")){
 					
-					b.setClients("hello");
+					//b.setClients("hello");
 					System.out.println(b.toString());
 					WriteTXT.EcribirFichero(FficheroPasswords, b.toString());
 					System.out.println("yess");
@@ -92,6 +99,7 @@ public class Server extends Thread
 			}
 
 			if (jsondata.contains("ClientName")){
+				System.out.println(jsondata);
 				ClientClas c = o.fromJson(jsondata, ClientClas.class);
 				if (jsondata.contains("newlogin")){		
 					if ((TomarObjeto.Leer(FficheroClient, c.getName()))== "No se encontro la palabra solicitada"){
@@ -101,6 +109,9 @@ public class Server extends Thread
 						writeC(socket, "Ya estas registrado");
 					}
 				}
+				//System.out.println("Joao es playo");
+			
+		
 				
 				if (c.getAction().equals("login")){
 					if (((TomarObjeto.Leer(FficheroClient, c.getName()) == "No se encontro la palabra solicitada"))&& ((TomarObjeto.Leer(FficheroClient, c.getPassword()) == "No se encontro la palabra solicitada"))){
@@ -144,8 +155,9 @@ public class Server extends Thread
 				}
 
 			}
-
 		}
+
+		
 		catch (Exception e)
 		{
 			System.out.println(e.getMessage()); 
@@ -156,7 +168,8 @@ public class Server extends Thread
 	{
 		try 
 		{
-			DataOutputStream flujoc= new DataOutputStream(socket.getOutputStream());
+			OutputStream mensajess = socket.getOutputStream();
+			DataOutputStream flujoc= new DataOutputStream(mensajess);
 			flujoc.writeUTF(message);
 
 		}
