@@ -51,12 +51,13 @@ public class ClanClas {
 		this.days = Days;
 	}
 	
-	public Object getClients(int i) {
+	public Object getClients() {
 		return clients.toString();
 	}
 	
 	public void setClients(String Clients) {
 		this.clients = Clients;
+	}
 	
 	
 	public String getRequest() {

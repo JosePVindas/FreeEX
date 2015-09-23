@@ -92,7 +92,7 @@ public class Server extends Thread
 					WriteTXT.EcribirFichero(FficheroPasswords, b.toString());
 					System.out.println("yess");
 					
-					System.out.println(b.getClients(1));
+					System.out.println(b.getClients());
 					writeC(socket, "daaa");
 					
 				}
@@ -125,7 +125,7 @@ public class Server extends Thread
 				if (c.getAction().equals("CrearArma")){
 					String a = TomarObjeto.Leer(FficheroClan, c.getClan());
 					ClanClas proponerarma = o.fromJson(a, ClanClas.class);
-					proponerarma.getClients(1);
+					proponerarma.getClients();
 					//mandarall (socket,);
 					
 
