@@ -1,1 +1,0 @@
-{"ClientName": "Gabriel", "password": "code", "range": "Recluta", "positionx": "0", "positiony": "Gabriel", "possessiona": "arma","possessiond": "defensa", "action": "newlogin"}

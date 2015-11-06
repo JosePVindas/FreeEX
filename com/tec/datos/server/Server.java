@@ -1,4 +1,4 @@
-package Server;
+package com.tec.datos.server;
 import java.net.*;
 //import com.google.gson.Gson;
 
